@@ -26,7 +26,7 @@ def find_unique_links(soup):
     print("There are " + str(len(unique_links)) + " links on this page")
     return unique_links
 
-def find_page_text(page_list, home_url):
+def find_page_description(page_list, home_url):
     output = {}
 
     for page in page_list:
