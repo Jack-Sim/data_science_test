@@ -44,5 +44,5 @@ def find_page_description(page_list, home_url):
 url = input("Enter the URl you want to scrap: ")
 soup = create_soup(url)
 unique_links = find_unique_links(soup)
-text_output = find_page_text(unique_links, url)
+text_output = find_page_description(unique_links, url)
 print(text_output["catalogue/a-light-in-the-attic_1000/index.html"])

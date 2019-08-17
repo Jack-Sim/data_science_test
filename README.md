@@ -10,6 +10,7 @@ Techniques will include:
 - Machine Learning
 - Facial Recognition
 - Modeling Data Trends
+- Creating a GUI interface for user inputs and outputs
 
 This is not an exhaustive list and will be added to as the techniques are used
 
