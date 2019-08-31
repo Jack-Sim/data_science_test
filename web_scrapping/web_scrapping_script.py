@@ -4,6 +4,7 @@
 
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 
 def create_soup(url):
     r = requests.get(url)
@@ -22,8 +23,8 @@ def find_unique_links(soup):
             pass
         else:
             unique_links += [url]
-            print(url)
-    print("There are " + str(len(unique_links)) + " links on this page")
+            #print(url)
+    #print("There are " + str(len(unique_links)) + " links on this page")
     return unique_links
 
 def find_page_description(page_list, home_url):
@@ -39,10 +40,16 @@ def find_page_description(page_list, home_url):
                 pass
             else:
                 output[page] = paragraph.text
-    return output
+
+    output_df = pd.DataFrame({"Page_Description": output})
+    print(len(output_df))
+
+    return output_df
 
 url = input("Enter the URl you want to scrap: ")
 soup = create_soup(url)
 unique_links = find_unique_links(soup)
 text_output = find_page_description(unique_links, url)
-print(text_output["catalogue/a-light-in-the-attic_1000/index.html"])
+
+text_output.to_csv("scraped_data.csv")
+#print(text_output["catalogue/a-light-in-the-attic_1000/index.html"])
