@@ -1,5 +1,6 @@
 from nltk.corpus import stopwords
-import pandas as pd
+import pandas as pd#
+import nltk
 
 # import the table containing scraped data
 text = pd.read_csv("scraped_data.csv")
@@ -25,6 +26,5 @@ for row in text.iterrows():
             pass
     clean_tokenised_text[link_path] = clean_tokens
     print(len(tokenised_text[link_path]), len(clean_tokens))
-
-
-#clean_tokens = [:]
+    freq = nltk.FreqDist(clean_tokens)
+    freq.plot(10, cumulative = False)
