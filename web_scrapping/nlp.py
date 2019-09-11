@@ -1,6 +1,9 @@
 from nltk.corpus import stopwords
 import pandas as pd#
 import nltk
+import matplotlib.pyplot as plt
+from PIL import Image
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
 # import the table containing scraped data
 text = pd.read_csv("scraped_data.csv")
@@ -28,3 +31,10 @@ for row in text.iterrows():
     print(len(tokenised_text[link_path]), len(clean_tokens))
     freq = nltk.FreqDist(clean_tokens)
     freq.plot(10, cumulative = False)
+
+    # Generate WordCloud
+    text = " "
+    wordcloud = WordCloud().generate(text.join(clean_tokens))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.show()
