@@ -1,10 +1,11 @@
 # this is an attempt at web scrapping using the Beautiful Soup 4 package
 
-# To install beautiful soup 4 run "pip3 install beautifulsoup4" in the command line
+# To install beautiful soup 4 run "pip3 install beautifulsoup4" in the cl
 
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+
 
 def create_soup(url):
     r = requests.get(url)
@@ -12,6 +13,7 @@ def create_soup(url):
     return soup
 
 # Find and print all unique links that are on a page
+
 
 def find_unique_links(soup):
     unique_links = []
@@ -23,9 +25,9 @@ def find_unique_links(soup):
             pass
         else:
             unique_links += [url]
-            #print(url)
-    #print("There are " + str(len(unique_links)) + " links on this page")
+    print("There are " + str(len(unique_links)) + " links on this page")
     return unique_links
+
 
 def find_page_description(page_list, home_url):
     output = {}
@@ -46,10 +48,10 @@ def find_page_description(page_list, home_url):
 
     return output_df
 
+
 url = input("Enter the URl you want to scrap: ")
 soup = create_soup(url)
 unique_links = find_unique_links(soup)
 text_output = find_page_description(unique_links, url)
 
 text_output.to_csv("scraped_data.csv")
-#print(text_output["catalogue/a-light-in-the-attic_1000/index.html"])
